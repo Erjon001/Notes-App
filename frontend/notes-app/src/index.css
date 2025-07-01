@@ -8,10 +8,20 @@
   }
 
   body {
-    background-color: black;
+    background-color: white;
     overflow-x: hidden;
   }
 }
-
 @layer components {
+  .input-box {
+    @apply w-full text-sm bg-transparent border-[1.5px] px-5 py-3 rounded mb-4 outline-none;
+  }
+
+  .bnt-primary {
+    @apply w-full text-sm;
+  }
+}
+:root {
+  --color-primary: #2b85ff;
+  --color-secondary: #ef863e;
 }
