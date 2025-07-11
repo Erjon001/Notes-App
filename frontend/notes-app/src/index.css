@@ -26,4 +26,11 @@
     @apply w-full text-sm text-white p-2 rounded my-1 hover:bg-blue-600;
     background-color: var(--color-primary);
   }
+
+  .icon-btn {
+    @apply text-xl text-slate-300 cursor-pointer;
+  }
+  .icon-btn:hover {
+    color: var(--color-primary);
+  }
 }
