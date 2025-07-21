@@ -30,7 +30,12 @@
   .icon-btn {
     @apply text-xl text-slate-300 cursor-pointer;
   }
+
   .icon-btn:hover {
     color: var(--color-primary);
+  }
+
+  .input-label {
+    @apply text-xs text-slate-400;
   }
 }
