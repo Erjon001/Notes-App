@@ -14,6 +14,7 @@ const app = express();
 
 const jwt = require("jsonwebtoken");
 const { authenticateToken } = require("./utilities.js");
+const nodemon = require("nodemon");
 
 app.use(express.json());
 
@@ -27,7 +28,7 @@ app.get("/", (req, res) => {
   res.json({ data: "hello" });
 });
 
-/*Create account API */
+/*   Create account API   */
 
 app.post("/create-account", async (req, res) => {
   const { fullName, email, password } = req.body;
@@ -76,7 +77,7 @@ app.post("/create-account", async (req, res) => {
   });
 });
 
-/*Login API*/
+/*   Login API   */
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
@@ -112,7 +113,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
-/*Add new note API */
+/*  Add new note API   */
 
 app.post("/add-note", authenticateToken, async (req, res) => {
   const { title, content, tags } = req.body;
@@ -150,9 +151,9 @@ app.post("/add-note", authenticateToken, async (req, res) => {
   }
 });
 
-/*Edit note API */
+/*  Edit note API  */
 
-app.post("/edit-note/:noteId", authenticateToken, async (req, res) => {
+app.put("/edit-note/:noteId", authenticateToken, async (req, res) => {
   const noteId = req.params.noteId;
   const { title, content, tags, isPinned } = req.body;
   const { user } = req.user;
@@ -187,6 +188,27 @@ app.post("/edit-note/:noteId", authenticateToken, async (req, res) => {
     return res.status(500).json({
       error: true,
       message: "Internal Server Error",
+    });
+  }
+});
+
+/*  Get notes API  */
+
+app.get("/get-all-notes", authenticateToken, async (req, res) => {
+  const { user } = req.user;
+
+  try {
+    const notes = await Note.find({ userId: user._id }).sort({ isPinned: -1 });
+
+    return res.json({
+      error: false,
+      notes,
+      message: "All notes retrieved successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      error: true,
+      message: "Internal server error",
     });
   }
 });
