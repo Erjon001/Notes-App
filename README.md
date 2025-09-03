@@ -9,12 +9,14 @@ This Notes App is a comprehensive solution for personal note management, featuri
 ## Key Features
 
 ### **User Authentication**
+
 - **User Registration** - Create new accounts with email validation
 - **Secure Login** - JWT-based authentication system
 - **Password Security** - Toggle visibility for password fields
 - **Profile Management** - User profile display with initials
 
 ### **Note Management**
+
 - **Create Notes** - Add new notes with title, content, and tags
 - **Edit Notes** - Modify existing notes seamlessly
 - **Delete Notes** - Remove unwanted notes
@@ -22,12 +24,14 @@ This Notes App is a comprehensive solution for personal note management, featuri
 - **Rich Content** - Support for detailed note content
 
 ### **Organization Features**
+
 - **Tag System** - Organize notes with custom tags
 - **Search Functionality** - Quick search through notes
 - **Pin/Unpin** - Priority management for important notes
 - **Date Tracking** - Automatic creation and modification timestamps
 
 ### **User Interface**
+
 - **Responsive Design** - Works on desktop and mobile devices
 - **Modern UI** - Clean, intuitive interface with TailwindCSS
 - **Modal System** - Smooth add/edit note experience
@@ -36,6 +40,7 @@ This Notes App is a comprehensive solution for personal note management, featuri
 ## Technology Stack
 
 ### **Frontend**
+
 - **React 19** - Modern React with hooks and functional components
 - **Vite** - Fast build tool and development server
 - **React Router DOM** - Client-side routing
@@ -44,6 +49,7 @@ This Notes App is a comprehensive solution for personal note management, featuri
 - **React Modal** - Modal component for add/edit functionality
 
 ### **Backend**
+
 - **Node.js** - JavaScript runtime environment
 - **Express.js** - Web application framework
 - **MongoDB** - NoSQL database with Mongoose ODM
@@ -52,6 +58,7 @@ This Notes App is a comprehensive solution for personal note management, featuri
 - **Nodemon** - Development auto-restart
 
 ### **Development Tools**
+
 - **ESLint** - Code linting and formatting
 - **Vite** - Development server with HMR
 - **dotenv** - Environment variable management
@@ -87,6 +94,7 @@ Notes-App/
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js (v18 or higher)
 - MongoDB Atlas account or local MongoDB
 - npm or yarn package manager
@@ -94,18 +102,21 @@ Notes-App/
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/Erjon001/Notes-App.git
    cd Notes-App
    ```
 
 2. **Setup Backend**
+
    ```bash
    cd backend
    npm install
    ```
 
 3. **Setup Frontend**
+
    ```bash
    cd ../frontend/notes-app
    npm install
@@ -113,6 +124,7 @@ Notes-App/
 
 4. **Environment Configuration**
    Create a `.env` file in the backend directory:
+
    ```env
    ACCESS_TOKEN_SECRET=your_jwt_secret_key
    ```
@@ -128,10 +140,12 @@ Notes-App/
 ### Running the Application
 
 1. **Start the Backend Server**
+
    ```bash
    cd backend
    npm start
    ```
+
    Backend runs on: `http://localhost:8000`
 
 2. **Start the Frontend Development Server**
@@ -144,10 +158,12 @@ Notes-App/
 ## API Endpoints
 
 ### Authentication
+
 - `POST /create-account` - Register new user
 - `POST /login` - User login
 
 ### Notes Management
+
 - `GET /get-all-notes` - Retrieve all user notes
 - `POST /add-note` - Create new note
 - `PUT /edit-note/:noteId` - Update existing note
@@ -163,16 +179,13 @@ Notes-App/
 ## Current Status
 
 **In Development** - This project is actively being developed with the following completed features:
+
 - User authentication system
 - Note CRUD operations
 - Responsive UI components
 - Search functionality
 - Tag system
 - Pin/unpin functionality
-
-## Contributing
-
-This is a personal project, but suggestions and feedback are welcome! Feel free to open issues or submit pull requests.
 
 ## License
 
@@ -184,4 +197,4 @@ This project is licensed under the ISC License.
 
 ---
 
-*Built with React, Node.js, and MongoDB*
+_Built with React, Node.js, and MongoDB_
