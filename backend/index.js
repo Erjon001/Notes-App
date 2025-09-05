@@ -230,7 +230,7 @@ app.get("/get-all-notes", authenticateToken, async (req, res) => {
   }
 });
 
-/* Delete note API */
+/*  Delete note API  */
 
 app.delete("/delete-note/:noteId", authenticateToken, async (req, res) => {
   const noteId = req.params.noteId;
@@ -253,7 +253,7 @@ app.delete("/delete-note/:noteId", authenticateToken, async (req, res) => {
   }
 });
 
-/* isPinned Update  */
+/*  isPinned Update  */
 
 app.put("/update-note-pinned/:noteId", authenticateToken, async (req, res) => {
   const noteId = req.params.noteId;
