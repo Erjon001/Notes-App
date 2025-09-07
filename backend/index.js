@@ -125,7 +125,7 @@ app.get("/get-user", authenticateToken, async (req, res) => {
   }
 
   return res.json({
-    user: isUser,
+    user: { fullName: isUser.fullName, email: isUser.email },
     message: "User retrieved successfully",
   });
 });
