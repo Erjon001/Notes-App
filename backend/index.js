@@ -267,14 +267,14 @@ app.put("/update-note-pinned/:noteId", authenticateToken, async (req, res) => {
       return res.status(404).json({ error: true, message: "Note not found " });
     }
 
-    if (isPinned) note.isPinned = isPinned;
+    if (isPinned) note.isPinned = isPinned || false;
 
     await note.save();
 
     return res.json({
       error: false,
       note,
-      message: "isPinned is updated successfully ",
+      message: "Pinned status updated successfully ",
     });
   } catch (error) {
     return res
