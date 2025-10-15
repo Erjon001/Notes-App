@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import NoteCard from "../../components/Cards/NoteCard";
 import { MdAdd } from "react-icons/md";
-import moment from "moment";
 import AddEditNotes from "./AddEditNotes";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
@@ -67,7 +66,7 @@ const Home = () => {
             <NoteCard
               key={item._id}
               title={item.title}
-              date={moment(item.createdOn).format("DD MMM YYYY")}
+              date={item.createdOn}
               content={item.content}
               tags={item.tags}
               isPinned={item.isPinned}
@@ -103,6 +102,7 @@ const Home = () => {
           onClose={() => {
             setOpenAddEditModal({ isShown: false, type: "add", data: null });
           }}
+          getAllNotes={getAllNotes}
         />
       </Modal>
     </>
