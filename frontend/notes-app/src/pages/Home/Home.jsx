@@ -14,6 +14,7 @@ const Home = () => {
     type: "add",
     data: null,
   });
+
   const [showToastMsg, setShowToastMsg] = useState({
     isShown: false,
     message: "",
@@ -30,7 +31,7 @@ const Home = () => {
 
   const showToastMessage = (message, type) => {
     setShowToastMsg({
-      isShown: false,
+      isShown: true,
       message: message,
       type: type,
     });
@@ -127,6 +128,7 @@ const Home = () => {
             setOpenAddEditModal({ isShown: false, type: "add", data: null });
           }}
           getAllNotes={getAllNotes}
+          showToastMessage={showToastMessage}
         />
       </Modal>
 
