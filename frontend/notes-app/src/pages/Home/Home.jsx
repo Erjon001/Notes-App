@@ -9,6 +9,7 @@ import axiosInstance from "../../utils/axiosInstance";
 import Toast from "../../components/ToastManager/Toast";
 import EmptyCard from "../../components/EmptyCard/EmptyCard";
 import AddNotesImg from "../../assets/images/add_note.svg";
+import NoDataImg from "../../assets/images/no_data.svg";
 
 const Home = () => {
   const [openAddEditModal, setOpenAddEditModal] = useState({
@@ -24,6 +25,7 @@ const Home = () => {
   });
   const [allNotes, setAllNotes] = useState([]);
   const [userInfo, setUserInfo] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(false);
 
   const navigate = useNavigate();
 
@@ -99,6 +101,28 @@ const Home = () => {
     }
   };
 
+  /* Search Notes */
+
+  const onSearchNote = async (query) => {
+    try {
+      const response = await axiosInstance.get("/search-notes", {
+        params: { query },
+      });
+
+      if (response.data && response.data.notes) {
+        setSearchQuery(true);
+        setAllNotes(response.data.notes);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleClearSearch = () => {
+    setSearchQuery(false);
+    getAllNotes();
+  };
+
   useEffect(() => {
     getAllNotes();
     getUserInfo();
@@ -107,7 +131,11 @@ const Home = () => {
 
   return (
     <>
-      <Navbar userInfo={userInfo} />
+      <Navbar
+        userInfo={userInfo}
+        onSearchNote={onSearchNote}
+        handleClearSearch={handleClearSearch}
+      />
       {allNotes.length > 0 ? (
         <div className="container mx-auto">
           <div className="grid grid-cols-3 gap-4 mt-8">
@@ -128,8 +156,12 @@ const Home = () => {
         </div>
       ) : (
         <EmptyCard
-          imgSrc={AddNotesImg}
-          message="No notes available. Click the button below to add a new note."
+          imgSrc={searchQuery ? NoDataImg : AddNotesImg}
+          message={
+            searchQuery
+              ? "No search results found."
+              : "No notes available. Click the button below to add a new note."
+          }
         />
       )}
 
