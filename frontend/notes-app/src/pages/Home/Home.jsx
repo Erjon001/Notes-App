@@ -7,6 +7,8 @@ import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 import Toast from "../../components/ToastManager/Toast";
+import EmptyCard from "../../components/EmptyCard/EmptyCard";
+import AddNotesImg from "../../assets/images/add_note.svg";
 
 const Home = () => {
   const [openAddEditModal, setOpenAddEditModal] = useState({
@@ -106,23 +108,30 @@ const Home = () => {
   return (
     <>
       <Navbar userInfo={userInfo} />
-      <div className="container mx-auto">
-        <div className="grid grid-cols-3 gap-4 mt-8">
-          {allNotes.map((item) => (
-            <NoteCard
-              key={item._id}
-              title={item.title}
-              date={item.createdOn}
-              content={item.content}
-              tags={item.tags}
-              isPinned={item.isPinned}
-              onEdit={() => handleEdit(item)}
-              onDelete={() => deleteNote(item)}
-              onPinNote={() => {}}
-            />
-          ))}
+      {allNotes.length > 0 ? (
+        <div className="container mx-auto">
+          <div className="grid grid-cols-3 gap-4 mt-8">
+            {allNotes.map((item) => (
+              <NoteCard
+                key={item._id}
+                title={item.title}
+                date={item.createdOn}
+                content={item.content}
+                tags={item.tags}
+                isPinned={item.isPinned}
+                onEdit={() => handleEdit(item)}
+                onDelete={() => deleteNote(item)}
+                onPinNote={() => {}}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <EmptyCard
+          imgSrc={AddNotesImg}
+          message="No notes available. Click the button below to add a new note."
+        />
+      )}
 
       <button
         className="w-14 h-14  flex items-center justify-center rounded-2xl bg-(--color-primary) hover:bg-blue-600 absolute right-1 bottom-1"
