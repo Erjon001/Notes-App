@@ -15,6 +15,7 @@ const app = express();
 const jwt = require("jsonwebtoken");
 const { authenticateToken } = require("./utilities.js");
 const nodemon = require("nodemon");
+const PRIVATE_KEY = process.env.ACCESS_TOKEN_SECRET;
 
 app.use(express.json());
 
@@ -97,9 +98,8 @@ app.post("/login", async (req, res) => {
   }
 
   if (userInfo.email == email && userInfo.password == password) {
-    const user = { user: userInfo };
-    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: "36000m",
+    const accessToken = jwt.sign({ user: userInfo }, PRIVATE_KEY, {
+      expiresIn: "30m",
     });
 
     return res.json({
